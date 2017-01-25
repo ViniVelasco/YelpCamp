@@ -29,7 +29,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //Express Configuration
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://vini:xaxaxa@ds131119.mlab.com:31119/yelpcamp");
+//mongodb://vini:xaxaxa@ds131119.mlab.com:31119/yelpcamp mongodb://localhost/yelp_camp
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
