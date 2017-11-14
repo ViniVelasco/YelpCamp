@@ -28,13 +28,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Express Configuration
-mongoose.connect(process.env.DATABASEURL);
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+//Mongo connection
+mongoose.connect(url); //enviroment variables always start with process.env in NODE
 //mongoose.connect("mongodb://vini:xaxaxa@ds131119.mlab.com:31119/yelpcamp");
 //mongoose.connect("mongodb://localhost/yelp_camp");
 
-console.log(process.env.DATABASEURL);
 
+//Express Configuration
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
